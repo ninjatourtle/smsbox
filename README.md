@@ -28,3 +28,20 @@ python bot.py
 
 Команда `/history` покажет последние анализы, а `/export <id>` пришлёт PDF‑отчёт.
 
+
+## Terraform Modules
+
+В каталоге `terraform` находятся модули для развертывания инфраструктуры:
+
+- `modules/s3-storage` — S3‑совместимое хранилище с включённым шифрованием и правилом удаления файлов через 30 дней.
+- `modules/rds-postgres` — база данных Postgres в Amazon RDS с шифрованием.
+- `modules/message-queue` — кластер Kafka (Amazon MSK) с шифрованием данных.
+- `modules/ecs` — кластер ECS для запуска контейнеров.
+
+Пример использования модулей находится в `terraform/main.tf`. Перед запуском инициализируйте и примените Terraform:
+
+```bash
+cd terraform
+terraform init
+terraform apply
+```
